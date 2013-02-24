@@ -20,7 +20,7 @@ else
 endif
 
 function! ctrlp#modified#init()
-  return split(system("git status --porcelain -z --untracked-files=all | tr '\\0' '\\n' | cut -c 4- && git diff-tree --no-commit-id --name-only -r HEAD..HEAD~3"), "\n")
+  return split(system("git status --porcelain -z --untracked-files=all | tr '\\0' '\\n' | cut -c 4- && git diff-tree --no-commit-id --name-only -r HEAD..HEAD~3 | sort | uniq"), "\n")
 endfunc
 
 function! ctrlp#modified#accept(mode, str)
